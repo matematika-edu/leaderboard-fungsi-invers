@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard Fungsi Invers | XI 8</title>
+<style>
+:root{--ink:#182230;--muted:#657184;--line:#e4e9f0;--bg:#f4f7fb;--white:#fff;--blue:#275dad;--blue2:#eaf1ff;--green:#16845b;--greenbg:#e7f7ef;--yellow:#a86d00;--yellowbg:#fff4d5;--red:#bc3945;--redbg:#ffeaec;--shadow:0 12px 35px rgba(26,48,82,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:24px 20px 48px}.hero{background:linear-gradient(120deg,#163e79,#2e69bd);color:#fff;border-radius:24px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px;box-shadow:var(--shadow)}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;opacity:.8}.hero h1{font-size:clamp(26px,4vw,40px);line-height:1.12;margin:10px 0}.hero p{margin:0;color:#dce8ff;max-width:620px;line-height:1.6}.hero-mark{font-size:56px;filter:drop-shadow(0 8px 12px #102f5b66)}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0;flex-wrap:wrap}.tabs{display:flex;background:#e7edf6;padding:5px;border-radius:12px;gap:4px}.tab{border:0;background:transparent;padding:10px 15px;border-radius:9px;color:#526176;font-weight:750}.tab.active{background:#fff;color:var(--blue);box-shadow:0 2px 8px #203a6015}.subtle{color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:20px;align-items:start}.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}.card h2{font-size:18px;margin:0 0 5px}.card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:20px}.pill{font-size:11px;font-weight:800;padding:6px 9px;border-radius:999px;white-space:nowrap}.pill.blue{background:var(--blue2);color:var(--blue)}.pill.green{background:var(--greenbg);color:var(--green)}.pill.yellow{background:var(--yellowbg);color:var(--yellow)}.pill.red{background:var(--redbg);color:var(--red)}.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.level{border-radius:13px;padding:14px 12px;border:1px solid var(--line)}.level strong{display:block;font-size:14px;margin-bottom:6px}.level span{font-size:12px;color:var(--muted)}.level.green{background:var(--greenbg);border-color:#c8ebd9}.level.yellow{background:var(--yellowbg);border-color:#f3df9e}.level.red{background:var(--redbg);border-color:#f5cbd0}.field{margin:15px 0}.field label{display:block;font-size:13px;font-weight:750;margin-bottom:7px}.field input,.field select{width:100%;border:1px solid #d8e0eb;border-radius:10px;padding:12px 13px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:#6895e4;box-shadow:0 0 0 3px #dce8ff}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:10px;padding:12px 15px;font-weight:800;transition:.15s}.btn:active{transform:translateY(1px)}.btn.primary{background:var(--blue);color:white}.btn.secondary{background:#edf2f8;color:#34445a}.btn.danger{background:#fff0f1;color:#ae2937;border:1px solid #f4cbd0}.btn.full{width:100%}.notice{margin-top:12px;padding:11px 12px;border-radius:10px;font-size:13px;line-height:1.45;display:none}.notice.ok{display:block;background:var(--greenbg);color:#116843}.notice.err{display:block;background:var(--redbg);color:#a32935}.table-wrap{overflow:auto}.leader-table{border-collapse:collapse;width:100%;min-width:320px}.leader-table th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:11px 9px;border-bottom:1px solid var(--line)}.leader-table td{padding:13px 9px;border-bottom:1px solid #eef1f5;font-size:13px}.leader-table tr:last-child td{border-bottom:0}.rank{font-weight:900;color:#66758a;width:34px}.toprank{font-size:17px}.name{font-weight:800}.score{font-weight:900;color:var(--blue);text-align:right;white-space:nowrap}.empty{text-align:center;color:var(--muted);padding:28px 8px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:17px}.stat{background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:13px}.stat span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}.stat strong{font-size:22px}.hidden{display:none!important}.teacher-note{background:#f7f9fc;border:1px dashed #cbd5e3;padding:13px;border-radius:12px;font-size:12px;color:var(--muted);line-height:1.55;margin-top:14px}.foot{text-align:center;color:#7b8798;font-size:12px;margin-top:25px}.small-btn{border:0;background:transparent;color:var(--blue);font-weight:800;font-size:12px;padding:7px}.animal{font-size:24px;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#f0f5ff;border-radius:12px;margin-right:9px;flex-shrink:0}.student-cell{display:flex;align-items:center;gap:2px}.teacher-list{display:grid;gap:9px;margin-top:12px}.teacher-student{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 12px}.teacher-student .student-meta{min-width:0;display:flex;align-items:center}.teacher-student .student-label{font-size:13px;font-weight:750;overflow-wrap:anywhere}.teacher-student .student-points{font-size:12px;color:var(--muted);white-space:nowrap}.btn.tiny{padding:8px 10px;font-size:12px;white-space:nowrap}.modal-back{position:fixed;inset:0;background:#101d32a8;display:flex;align-items:center;justify-content:center;padding:20px;z-index:5}.modal{max-width:440px;width:100%;background:white;border-radius:18px;padding:24px;box-shadow:0 20px 70px #0003}.modal h3{margin:0 0 8px}.modal p{color:var(--muted);font-size:14px;line-height:1.5}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.hero{padding:23px}.hero-mark{font-size:42px}.shell{padding:14px 12px 32px}.card{padding:17px}}@media(max-width:480px){.row2{grid-template-columns:1fr}.levels{gap:6px}.level{padding:11px 8px}.level strong{font-size:12px}.level span{font-size:11px}.hero-mark{display:none}.tabs{width:100%}.tab{flex:1;padding:10px 7px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <div><div class="eyebrow">Matematika Wajib · XI 8</div><h1>Fungsi Invers<br>Leaderboard</h1><p>Permainan kartu bertingkat — selesaikan tantangan, kumpulkan poin, dan naik peringkat dengan sportif.</p></div>
+    <div class="hero-mark" aria-hidden="true">🏆</div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs" role="tablist" aria-label="Mode akses">
+      <button class="tab active" id="studentTab" type="button">🎒 Akses Murid</button>
+      <button class="tab" id="teacherTab" type="button">🧑‍🏫 Akses Guru</button>
+    </div>
+    <div class="subtle" id="storageStatus">● Penyimpanan lokal aktif</div>
+  </div>
+
+  <main class="layout">
+    <section class="card" id="entryCard">
+      <div class="card-head"><div><h2>Simpan Nilai Teman</h2><div class="subtle">Masukkan nilai setelah jawaban dikoreksi.</div></div><span class="pill blue">MODE MURID</span></div>
+      <div class="field"><label for="studentName">Nama murid</label><select id="studentName"></select></div>
+      <div class="levels">
+        <div class="level green"><strong>🟢 Kartu Hijau</strong><span>Invers linear · maks. 10</span></div>
+        <div class="level yellow"><strong>🟡 Kartu Kuning</strong><span>Invers rasional · maks. 15</span></div>
+        <div class="level red"><strong>🔴 Kartu Merah</strong><span>Invers kuadrat · maks. 20</span></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="greenScore">Nilai Hijau (0–10)</label><input id="greenScore" type="number" min="0" max="10" step="1" placeholder="0–10"></div>
+        <div class="field"><label for="yellowScore">Nilai Kuning (0–15)</label><input id="yellowScore" type="number" min="0" max="15" step="1" placeholder="0–15"></div>
+      </div>
+      <div class="field"><label for="redScore">Nilai Merah (0–20)</label><input id="redScore" type="number" min="0" max="20" step="1" placeholder="0–20"></div>
+      <button class="btn primary full" id="saveScore">Simpan Nilai Teman</button>
+      <div id="entryNotice" class="notice" role="status"></div>
+      <div class="teacher-note">Total maksimal 45 poin. Nilai murid yang dipilih akan diperbarui berdasarkan tiga nilai yang dimasukkan. Data tersimpan di browser dan perangkat ini saja.</div>
+    </section>
+
+    <section class="card hidden" id="teacherCard">
+      <div class="card-head"><div><h2>Panel Guru</h2><div class="subtle">Pantau peringkat dan kelola nilai kelas.</div></div><span class="pill blue">MODE GURU</span></div>
+      <div class="summary">
+        <div class="stat"><span>Jumlah murid</span><strong id="totalStudents">35</strong></div>
+        <div class="stat"><span>Sudah dinilai</span><strong id="gradedStudents">0</strong></div>
+        <div class="stat"><span>Poin tertinggi</span><strong id="topScore">0</strong></div>
+      </div>
+      <h2 style="font-size:15px;margin-bottom:10px">Reset nilai murid</h2>
+      <p class="subtle">Pilih murid tertentu untuk menghapus nilainya saja, atau reset seluruh kelas.</p>
+      <div class="field"><label for="teacherSearch">Cari murid untuk reset</label><input id="teacherSearch" type="search" placeholder="Ketik nama murid..."></div>
+      <div id="teacherStudentList" class="teacher-list"></div>
+      <button class="btn danger full" id="resetButton" style="margin-top:12px">Reset Semua Nilai</button>
+      <div id="teacherNotice" class="notice" role="status"></div>
+      <div class="teacher-note"><strong>Catatan keamanan:</strong> kode akses di versi ini berada di dalam file website, sehingga cocok untuk pembatasan sederhana di kelas, bukan keamanan tingkat tinggi.</div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><div><h2>🏆 Papan Peringkat</h2><div class="subtle">Peringkat diperbarui otomatis berdasarkan total poin.</div></div><span class="pill green">LIVE DI PERANGKAT INI</span></div>
+      <div class="field" style="margin-top:-3px"><label for="searchName">Cari nama murid</label><input id="searchName" type="search" placeholder="Ketik nama murid..."></div>
+      <div class="table-wrap">
+        <table class="leader-table">
+          <thead><tr><th>#</th><th>Nama murid</th><th style="text-align:right">Poin</th></tr></thead>
+          <tbody id="leaderBody"></tbody>
+        </table>
+      </div>
+      <div class="teacher-note">Jika poin sama, murid akan memiliki urutan berdasarkan total poin lalu nama. Daftar awal berisi 35 nama contoh yang bisa diganti di bagian pengaturan kode.</div>
+    </section>
+  </main>
+  <div class="foot">Dibuat untuk pembelajaran Fungsi Invers · Kelas XI 8 · Hanny Tyasningrum</div>
+</div>
+
+
+<div class="modal-back hidden" id="teacherLoginModal" role="dialog" aria-modal="true" aria-labelledby="teacherLoginTitle">
+  <div class="modal"><h3 id="teacherLoginTitle">Akses Guru</h3><p>Masukkan PIN untuk membuka panel guru.</p>
+    <div class="field"><label for="teacherPinInput">PIN Guru</label><input id="teacherPinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="Masukkan PIN" /></div>
+    <div id="teacherLoginNotice" class="notice" role="status"></div>
+    <div class="modal-actions"><button class="btn secondary" type="button" id="cancelTeacherLogin">Batal</button><button class="btn primary" type="button" id="submitTeacherLogin">Buka Akses Guru</button></div>
+  </div>
+</div>
+
+<div class="modal-back hidden" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><h3 id="modalTitle">Reset semua nilai?</h3><p id="confirmText">Seluruh nilai pada browser ini akan dihapus. Tindakan ini tidak dapat dibatalkan.</p><div class="modal-actions"><button class="btn secondary" id="cancelReset">Batal</button><button class="btn danger" id="confirmReset">Ya, reset nilai</button></div></div>
+</div>
+<script>
+/* Ganti nama-nama contoh berikut dengan nama 35 murid di kelas. */
+const DEFAULT_STUDENTS = [
+"ABBIYYU NAUFAL FAYYAZ",
+"ABID SETIYO WIBOWO",
+"AIDA PUTRI ZHAFIRAH",
+"ALIEF FAZA RACHMAN",
+"ALVIAN CHANDRA WIJAYA",
+"ANNISA SALMA AZZAHRA",
+"ARETHA MAHARANI",
+"ATSYLA YASMINE LISADA",
+"AULIYA RAHMAN",
+"AULYA SILVA",
+"AZKA FATHANOSA AVICIENA",
+"AZZAM AYDIN UTOMO",
+"CHIKA PARAMITHA ARTANTI",
+"CLALIFTA WARDANIA PRASASTI",
+"DHAFIR RAFIF AHSAN",
+"DIANA DWI HAYUNINGDYAH",
+"FAHRI VINSA HARTONO",
+"HAKIIMI HAYAATAN",
+"HANGGALEVI WANINGYUN SIWI",
+"JIHAN JUWIJI",
+"KEYSHA KUSMAYDA",
+"KHAURA ALFASTUNISA AL ROSID",
+"LALE AINIYA MALIKA HUMAIRA",
+"MUHAMMAD FAHRI NUGRAHA",
+"NADEEN RIZKYA MAHIRA",
+"NADINE AURELIA KILA",
+"NAYLA ORIANI",
+"RAFFASYA APRIAWAN SASONGKO",
+"RAKA FIDEL IBNI HUMAM",
+"SYAKIRA NAJWA AL ZAHRA",
+"TANIA BRILLIANT WIJAYA",
+"TASHARAYEENA DENARA HERMAWAN",
+"VITTORIO FROMUSI",
+"WILDAN REZKY PUTRA ARNINDITO",
+"ZIYI EVELYN"
+];
+const STORAGE_KEY = "fungsiInversLeaderboardXI8_v1";
+const ANIMALS = ["🐱","🐼","🦊","🐰","🐻","🐸","🐯","🐨","🐶","🦁","🐵","🐧","🦄","🐢","🐬","🦉","🐹","🐮","🐙","🦋","🐺","🦝","🐥","🦖","🐳","🐝","🦩","🦔","🐴","🐞","🦜","🐑","🦦","🐿️","🐣"];
+const animalFor = name => ANIMALS[Math.max(0, DEFAULT_STUDENTS.indexOf(name)) % ANIMALS.length];
+let pendingResetName = null;
+let scores = {};
+let storageAvailable = true;
+const $ = id => document.getElementById(id);
+
+function blankScore(){ return {green:0,yellow:0,red:0,graded:false}; }
+function loadScores(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    scores = raw ? JSON.parse(raw) : {};
+    DEFAULT_STUDENTS.forEach(n=>{ if(!scores[n]) scores[n]=blankScore(); });
+    Object.keys(scores).forEach(n=>{ if(!DEFAULT_STUDENTS.includes(n)) delete scores[n]; });
+  }catch(e){ storageAvailable=false; scores={}; DEFAULT_STUDENTS.forEach(n=>scores[n]=blankScore()); }
+}
+function persist(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));
+    storageAvailable=true; $("storageStatus").textContent="● Penyimpanan lokal aktif";
+    return true;
+  }catch(e){
+    storageAvailable=false; $("storageStatus").textContent="● Penyimpanan gagal";
+    return false;
+  }
+}
+function total(s){return Number(s.green||0)+Number(s.yellow||0)+Number(s.red||0);}
+function showNotice(id,message,type){
+  const el=$(id);el.textContent=message;el.className="notice "+type;
+}
+function renderNames(){
+  const sel=$("studentName");sel.innerHTML="";
+  DEFAULT_STUDENTS.forEach(n=>{const o=document.createElement("option");o.value=n;o.textContent=animalFor(n)+"  "+n;sel.appendChild(o);});
+}
+function renderLeaderboard(){
+  const query=$("searchName").value.trim().toLowerCase();
+  const list=DEFAULT_STUDENTS.map(name=>({name,...scores[name],points:total(scores[name]||blankScore())}))
+    .sort((a,b)=>b.points-a.points||a.name.localeCompare(b.name,"id"))
+    .filter(s=>s.name.toLowerCase().includes(query));
+  const body=$("leaderBody");body.innerHTML="";
+  if(!list.length){body.innerHTML='<tr><td colspan="3" class="empty">Nama tidak ditemukan.</td></tr>';return;}
+  list.forEach((s,i)=>{
+    const rank=DEFAULT_STUDENTS.map(name=>({name,points:total(scores[name]||blankScore())})).sort((a,b)=>b.points-a.points||a.name.localeCompare(b.name,"id")).findIndex(x=>x.name===s.name)+1;
+    const tr=document.createElement("tr");
+    const rankText=rank===1?"🥇":rank===2?"🥈":rank===3?"🥉":rank;
+    tr.innerHTML=`<td class="rank ${rank<=3?"toprank":""}">${rankText}</td><td><div class="student-cell"><span class="animal">${animalFor(s.name)}</span><div><div class="name"></div><div class="subtle" style="font-size:11px;margin-top:3px"></div></div></div></td><td class="score">${s.points} <span style="font-size:10px;color:#8793a3;font-weight:600">/45</span></td>`;
+    tr.children[1].querySelector(".name").textContent=s.name;
+    tr.children[1].querySelector(".subtle").textContent=s.graded?"Hijau "+s.green+" · Kuning "+s.yellow+" · Merah "+s.red:"Belum ada nilai";
+    body.appendChild(tr);
+  });
+  $("totalStudents").textContent=DEFAULT_STUDENTS.length;
+  $("gradedStudents").textContent=DEFAULT_STUDENTS.filter(n=>scores[n]?.graded).length;
+  $("topScore").textContent=Math.max(0,...DEFAULT_STUDENTS.map(n=>total(scores[n]||blankScore())));
+}
+function renderTeacherStudentList(){
+  const query=($("teacherSearch")?.value||"").trim().toLowerCase();
+  const container=$("teacherStudentList");
+  if(!container) return;
+  const names=DEFAULT_STUDENTS.filter(n=>n.toLowerCase().includes(query));
+  container.innerHTML="";
+  if(!names.length){container.textContent="Nama murid tidak ditemukan.";return;}
+  names.forEach(name=>{
+    const s=scores[name]||blankScore();
+    const row=document.createElement("div");
+    row.className="teacher-student";
+    const meta=document.createElement("div");meta.className="student-meta";
+    const animal=document.createElement("span");animal.className="animal";animal.textContent=animalFor(name);
+    const label=document.createElement("span");label.className="student-label";label.textContent=name;
+    meta.append(animal,label);
+    const right=document.createElement("div");right.style.display="flex";right.style.alignItems="center";right.style.gap="8px";
+    const points=document.createElement("span");points.className="student-points";points.textContent=total(s)+"/45";
+    const btn=document.createElement("button");btn.type="button";btn.className="btn danger tiny";btn.textContent="Reset";
+    btn.addEventListener("click",()=>{pendingResetName=name;$("modalTitle").textContent="Reset nilai murid?";$("confirmText").textContent="Nilai "+name+" akan dihapus. Nilai murid lain tetap aman."; $("confirmReset").textContent="Ya, reset murid";$("confirmModal").classList.remove("hidden");});
+    right.append(points,btn);row.append(meta,right);container.appendChild(row);
+  });
+}
+const TEACHER_ACCESS_CODE = "1234"; // Ganti kode ini jika ingin menggunakan kode lain.
+function setMode(mode){
+  const teacher=mode==="teacher";
+  $("entryCard").classList.toggle("hidden",teacher);
+  $("teacherCard").classList.toggle("hidden",!teacher);
+  $("studentTab").classList.toggle("active",!teacher);
+  $("teacherTab").classList.toggle("active",teacher);
+}
+function clearInputs(){["greenScore","yellowScore","redScore"].forEach(id=>$(id).value="");}
+$("studentTab").addEventListener("click",()=>setMode("student"));
+function openTeacherLogin(){
+  $("teacherPinInput").value="";
+  $("teacherLoginNotice").className="notice";
+  $("teacherLoginNotice").textContent="";
+  $("teacherLoginModal").classList.remove("hidden");
+  setTimeout(()=>$("teacherPinInput").focus(),50);
+}
+function attemptTeacherLogin(){
+  const code=$("teacherPinInput").value.trim();
+  if(code===TEACHER_ACCESS_CODE){
+    $("teacherLoginModal").classList.add("hidden");
+    setMode("teacher");
+    renderTeacherStudentList();
+    showNotice("teacherNotice","PIN benar. Akses guru dibuka.","ok");
+  }else{
+    showNotice("teacherLoginNotice","PIN salah. Silakan coba lagi.","err");
+    $("teacherPinInput").focus();
+    $("teacherPinInput").select();
+  }
+}
+$("teacherTab").addEventListener("click",openTeacherLogin);
+$("submitTeacherLogin").addEventListener("click",attemptTeacherLogin);
+$("teacherPinInput").addEventListener("keydown",e=>{if(e.key==="Enter")attemptTeacherLogin();});
+$("cancelTeacherLogin").addEventListener("click",()=>$("teacherLoginModal").classList.add("hidden"));
+$("searchName").addEventListener("input",renderLeaderboard);
+$("saveScore").addEventListener("click",()=>{
+  const name=$("studentName").value;
+  const vals=[["greenScore",10,"Hijau"],["yellowScore",15,"Kuning"],["redScore",20,"Merah"]];
+  const parsed={};
+  for(const [id,max,label] of vals){
+    const raw=$(id).value;
+    if(raw===""||!Number.isInteger(Number(raw))||Number(raw)<0||Number(raw)>max){
+      showNotice("entryNotice",`Masukkan nilai Kartu ${label} berupa bilangan bulat 0–${max}.`,"err");return;
+    }
+    parsed[id]=Number(raw);
+  }
+  scores[name]={green:parsed.greenScore,yellow:parsed.yellowScore,red:parsed.redScore,graded:true};
+  const ok=persist();renderLeaderboard();
+  if(ok) showNotice("entryNotice",`Nilai ${name} berhasil disimpan. Total: ${total(scores[name])}/45 poin.`,"ok");
+  else showNotice("entryNotice","Nilai diperbarui pada halaman, tetapi gagal disimpan di browser. Periksa pengaturan penyimpanan browser.","err");
+  clearInputs();
+});
+$("teacherSearch").addEventListener("input",renderTeacherStudentList);
+$("resetButton").addEventListener("click",()=>{
+  pendingResetName=null;
+  $("modalTitle").textContent="Reset semua nilai?";
+  $("confirmText").textContent="Seluruh nilai pada browser ini akan dihapus. Tindakan ini tidak dapat dibatalkan.";
+  $("confirmReset").textContent="Ya, reset semua";
+  $("confirmModal").classList.remove("hidden");
+});
+$("cancelReset").addEventListener("click",()=>{$("confirmModal").classList.add("hidden");pendingResetName=null;});
+$("confirmReset").addEventListener("click",()=>{
+  if(pendingResetName){ scores[pendingResetName]=blankScore(); }
+  else { DEFAULT_STUDENTS.forEach(n=>scores[n]=blankScore()); }
+  const resetName=pendingResetName;
+  pendingResetName=null;
+  const ok=persist();renderLeaderboard();renderTeacherStudentList();$("confirmModal").classList.add("hidden");
+  $("confirmReset").textContent="Ya, reset nilai";
+  $("modalTitle").textContent="Reset semua nilai?";
+  $("confirmText").textContent="Seluruh nilai pada browser ini akan dihapus. Tindakan ini tidak dapat dibatalkan.";
+  showNotice("teacherNotice",ok?(resetName?"Nilai "+resetName+" berhasil direset.":"Semua nilai berhasil direset dan penyimpanan browser diperbarui."):"Nilai direset pada halaman, tetapi penyimpanan browser gagal diperbarui.",ok?"ok":"err");
+});
+
+loadScores();renderNames();renderLeaderboard();renderTeacherStudentList();
+</script>
+</body>
+</html>
